@@ -49,5 +49,12 @@ class Nagira < Sinatra::Base
     def update_host_status params
       put_update :PROCESS_HOST_CHECK_RESULT, params
     end
+
+    #
+    # submit data to ::Nagios::ExternalCommands object.
+    # 
+    def acknowledge_host_problem params
+      put_update :ACKNOWLEDGE_HOST_PROBLEM, params
+    end
   
 end

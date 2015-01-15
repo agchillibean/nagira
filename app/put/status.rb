@@ -95,4 +95,9 @@ class Nagira < Sinatra::Base
     nil
   end
   
+  put "/_status/:host_name/sticky/:sticky/notify/:notify/persistent/:persistent/author_coment/:author_coment" do
+    @data = acknowledge_host_problem params
+    nil
+  end
+
 end
