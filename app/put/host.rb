@@ -15,7 +15,8 @@ class Nagira < Sinatra::Base
   # end
 
   put "/_acknowledge/:host_name" do
-    @data = acknowledge_host_problem params
+    puts params.inspect
+    @data = acknowledge_host_problem params   
     nil
   end
 
