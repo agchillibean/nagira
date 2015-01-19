@@ -14,8 +14,9 @@ class Nagira < Sinatra::Base
   #   nil
   # end
 
-  put "/_acknowledge/:host_name/:sticky/:notify/:persistent/:author" do
-    @data = update_host_status params
+  put "/_acknowledge/:host_name" do
+    @data = acknowledge_host_problem params
+    nil
   end
 
   put "/_status" do
