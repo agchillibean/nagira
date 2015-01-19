@@ -14,9 +14,14 @@ class Nagira < Sinatra::Base
   #   nil
   # end
 
-  put "/_acknowledge/:host_name" do
-    @data = acknowledge_host_problem params
-    nil
+  put "/_acknowledge/:host_name/:sticky/:notify/:persistent/:author" do
+    @data = update_host_status @input.first.merge({
+      'host_name' => params['host_name'],
+      'sticky' => params['sticky'],
+      'notify' => params['notify'],
+      'persistent' => params['persistent'],
+      'author' => params['comment']
+    })
   end
 
   put "/_status" do
