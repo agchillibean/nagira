@@ -7,6 +7,13 @@ class Nagira < Sinatra::Base
   # @overload put("/_status")
   #
   # Submit JSON Hash for multiple services,  on multiple hosts.
+
+
+  put "/_acknowledge/:host_name/sticky/:sticky/notify/:notify/persistent/:persistent/author/:author/comment/:comment" do
+    @data = acknowledge_host_problem params
+    nil
+  end
+
   put "/_status" do
     "TODO: Not implemented"
   end
@@ -32,6 +39,7 @@ class Nagira < Sinatra::Base
   #      "status_code":"0",
   #      "plugin_output" : "ping OK"
   #     }
+
   put "/_status/:host_name" do
     @data = update_host_status @input.first.merge({
       'host_name' => params['host_name']
@@ -47,5 +55,6 @@ class Nagira < Sinatra::Base
   put "/_host_status/:host_name" do
     "Not implemented: TODO"
   end
+
 
 end
