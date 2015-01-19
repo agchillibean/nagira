@@ -9,7 +9,12 @@ class Nagira < Sinatra::Base
   # Submit JSON Hash for multiple services,  on multiple hosts.
 
 
-  put "/_acknowledge/:host_name/sticky/:sticky/notify/:notify/persistent/:persistent/author/:author/comment/:comment" do
+  # put "/_acknowledge/:host_name/sticky/:sticky/notify/:notify/persistent/:persistent/author/:author/comment/:comment" do
+  #   @data = acknowledge_host_problem params
+  #   nil
+  # end
+
+  put "/_acknowledge/:host_name" do
     @data = acknowledge_host_problem params
     nil
   end
